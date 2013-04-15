@@ -5,20 +5,9 @@ import java.io.IOException;
 
 public class FileNumClasses {
 
-        private String[] listWords;
+    private String[] listWords;
     private Util util = new Util();
     private String line;
-
-    public int getFileClass(String file) throws IOException {
-        int num = 0;
-        BufferedReader br = util.getBufferTextLines(file);
-        while ((line = br.readLine()) != null) {
-            if (line.contains("class")) {
-                num++;
-            }
-        }
-        return num;
-    }
 
     public boolean isFunction(String line) {
         listWords = util.getWords(line);
