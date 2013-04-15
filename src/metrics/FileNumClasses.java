@@ -11,28 +11,24 @@ public class FileNumClasses {
     private String line;
 
     public boolean isFunction(String line, String path) {
-        if (line.contains("void")) {
-            return true;
-        } else {
-            if (line.contains("{")) {
-                if (!fileconstruct.isConstruct(line, path)) {
-                    if (!line.contains("class")) {
-                        System.out.println(line);
-                        return true;
-                    }
-                    return false;
-                }
-                return false;
-            }
-            return false;
-        }
+        return false;
     }
 
+    public boolean isLineSpaceBlank(String line){
+        for(int i=0; i<line.length(); i++){
+            if (line.charAt(i) != ' '){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    
     public int numLinesEffectives(String file) throws IOException {
         int num = 0;
         BufferedReader br = util.getBufferTextLines(file);
         while ((line = br.readLine()) != null) {
-            if (line.length() != 0) {
+            if (!(line.isEmpty() || "".equals(line) || " ".equals(line) || "\n".equals(line) || isLineSpaceBlank(line))) {
                 num++;
             }
         }
