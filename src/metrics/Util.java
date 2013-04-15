@@ -14,15 +14,16 @@ import java.io.IOException;
  * @author Jorge
  */
 public class Util {
-    
-    public Util(){}
-    
+
+    public Util() {
+    }
+
     public String[] getWords(String line) {
         String[] words = line.split(" ");//[pal1,pal2,pal3]
         return words;
     }
-    
-     public BufferedReader getBufferTextLines(String file) throws IOException {
+
+    public BufferedReader getBufferTextLines(String file) throws IOException {
         File archivo = null;
         FileReader fr = null;
         BufferedReader br = null;
@@ -30,5 +31,17 @@ public class Util {
         fr = new FileReader(archivo);
         br = new BufferedReader(fr);
         return br;
+    }
+
+    public int getFilePattern(String file, String pattern) throws IOException {
+        int num = 0;
+        BufferedReader br = getBufferTextLines(file);
+        String linea;
+        while ((linea = br.readLine()) != null) {
+            if (linea.contains(pattern)) {
+                num++;
+            }
+        }
+        return num;
     }
 }
