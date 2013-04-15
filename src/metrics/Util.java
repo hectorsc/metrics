@@ -19,7 +19,13 @@ public class Util {
     }
 
     public String[] getWords(String line) {
-        String[] words = line.split(" ");//[pal1,pal2,pal3]
+        String[] w = line.split(" ");//[pal1,pal2,pal3]
+        String[] words = new String[w.length];
+        for(int i=0;i<w.length;i++){
+            if(!" ".equals(w[i])){
+               words[i] = w[i];
+            }
+        }
         return words;
     }
 

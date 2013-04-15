@@ -13,9 +13,11 @@ public class Parser {
         int num = filenumclass.listNumFiles(f, 0);
         int numlines = fi.numLines("/Users/gloriav/NetBeansProjects/Tree/src/evaluator/calculator/constants/constant.java");
         int numlinesefectives = fi.numLinesEffectives("/Users/gloriav/NetBeansProjects/Tree/src/evaluator/calculator/constants/constant.java");
+        int numFunctions = fi.getFunctions("/Users/gloriav/NetBeansProjects/Tree/src/evaluator/calculator/constants/constant.java");
         System.out.println(num);
         System.out.println("Numero lineas efectivas: " + numlinesefectives);
         System.out.println("Numero lineas: " + numlines);
+        System.out.println("Numero de funciones: " + numFunctions);
         
     }
 }

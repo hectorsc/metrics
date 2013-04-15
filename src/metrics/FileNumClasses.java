@@ -9,11 +9,33 @@ public class FileNumClasses {
     private Util util = new Util();
     private String line;
 
+    public boolean isTypeReturn(String line) {
+        switch (line) {
+            case "int":
+                return true;
+
+            case "double":
+                return true;
+
+            case "boolean":
+                return true;
+
+            default:
+                return false;
+        }
+    }
+
     public boolean isFunction(String line) {
+        if (line.contains("void")) {
+            return true;
+        }
         listWords = util.getWords(line);
         if (listWords.length != 0) {
-            if (line.contains("public") || line.contains("private") || line.contains("protected") && line.contains("{")) {
-                return true;
+            if ("public".equals(listWords[0]) || "private".equals(listWords[0]) || "protected".equals(listWords[0])) {
+                if (isTypeReturn(listWords[1])) {
+                    return true;
+                }
+                return false;
             }
             return false;
         }
