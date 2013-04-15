@@ -1,16 +1,22 @@
 package metrics;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 
 public class FileNumClasses {
 
-    private FileConstructsParams fileconstruct = new FileConstructsParams();
-    private String[] listWords;
     private Util util = new Util();
     private String line;
 
+    public String getNameConstructs(String filename){
+        File f = new File(filename);
+        String[] namefile = f.getName().split(".java");
+        return namefile[0];
+    }
+    
     public boolean isFunction(String line, String path) {
+        if(line.contains("void") || line.contains("{") && line.contains("(") && !line.contains("class") && !line.contains(getNameConstructs(path))) return true;
         return false;
     }
 
