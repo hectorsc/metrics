@@ -1,33 +1,19 @@
 package metrics;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 
 public class FileNumClasses {
 
-    private String[] listWords;
+        private String[] listWords;
     private Util util = new Util();
+    private String line;
 
     public int getFileClass(String file) throws IOException {
         int num = 0;
         BufferedReader br = util.getBufferTextLines(file);
-        String linea;
-        while ((linea = br.readLine()) != null) {
-            if (linea.contains("class")) {
-                num++;
-            }
-        }
-        return num;
-    }
-
-    public int getFileImports(String file) throws IOException {
-        int num = 0;
-        BufferedReader br = util.getBufferTextLines(file);
-        String linea;
-        while ((linea = br.readLine()) != null) {
-            if (linea.contains("import")) {
+        while ((line = br.readLine()) != null) {
+            if (line.contains("class")) {
                 num++;
             }
         }
@@ -45,12 +31,31 @@ public class FileNumClasses {
         return false;
     }
 
+    public int numLinesEffectives(String file) throws IOException {
+        int num = 0;
+        BufferedReader br = util.getBufferTextLines(file);
+        while ((line = br.readLine()) != null) {
+            if (line.length() != 0) {
+                num++;
+            }
+        }
+        return num;
+    }
+
+    public int numLines(String file) throws IOException {
+        int num = 0;
+        BufferedReader br = util.getBufferTextLines(file);
+        while ((line = br.readLine()) != null) {
+            num++;
+        }
+        return num;
+    }
+
     public int getFunctions(String file) throws IOException {
         int num = 0;
         BufferedReader br = util.getBufferTextLines(file);
-        String linea;
-        while ((linea = br.readLine()) != null) {
-            if (isFunction(linea)) {
+        while ((line = br.readLine()) != null) {
+            if (isFunction(line)) {
                 num++;
             }
         }
