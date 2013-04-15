@@ -6,12 +6,16 @@ import java.io.IOException;
 
 public class FileConstructsParams {
     
+    public FileConstructsParams(){
+    }
+    
     private String[] listWords;
     private Util util = new Util();
     
     public boolean isConstruct(String line, String path) {
         line.getClass();
         if (line.contains(path.concat("("))) {
+            System.out.println(line.contains(path.concat("(")));
             return true;
         }
         return false;

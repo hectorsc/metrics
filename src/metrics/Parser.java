@@ -18,6 +18,6 @@ public class Parser {
         System.out.println("Numero lineas efectivas: " + numlinesefectives);
         System.out.println("Numero lineas: " + numlines);
         System.out.println("Numero de funciones: " + numFunctions);
-        
+
     }
 }

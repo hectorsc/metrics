@@ -5,41 +5,27 @@ import java.io.IOException;
 
 public class FileNumClasses {
 
+    private FileConstructsParams fileconstruct = new FileConstructsParams();
     private String[] listWords;
     private Util util = new Util();
     private String line;
 
-    public boolean isTypeReturn(String line) {
-        switch (line) {
-            case "int":
-                return true;
-
-            case "double":
-                return true;
-
-            case "boolean":
-                return true;
-
-            default:
-                return false;
-        }
-    }
-
-    public boolean isFunction(String line) {
+    public boolean isFunction(String line, String path) {
         if (line.contains("void")) {
             return true;
-        }
-        listWords = util.getWords(line);
-        if (listWords.length != 0) {
-            if ("public".equals(listWords[0]) || "private".equals(listWords[0]) || "protected".equals(listWords[0])) {
-                if (isTypeReturn(listWords[1])) {
-                    return true;
+        } else {
+            if (line.contains("{")) {
+                if (!fileconstruct.isConstruct(line, path)) {
+                    if (!line.contains("class")) {
+                        System.out.println(line);
+                        return true;
+                    }
+                    return false;
                 }
                 return false;
             }
             return false;
         }
-        return false;
     }
 
     public int numLinesEffectives(String file) throws IOException {
@@ -66,7 +52,7 @@ public class FileNumClasses {
         int num = 0;
         BufferedReader br = util.getBufferTextLines(file);
         while ((line = br.readLine()) != null) {
-            if (isFunction(line)) {
+            if (isFunction(line, file)) {
                 num++;
             }
         }
