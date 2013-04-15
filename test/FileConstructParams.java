@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import metrics.FileNumClasses;
 import org.junit.Test;
