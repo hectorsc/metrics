@@ -10,6 +10,6 @@ package metrics;
  */
 public class FileConstrucsParams {
     
-    
+    private Util util = new Util();
     
 }
