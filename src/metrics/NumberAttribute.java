@@ -37,7 +37,7 @@ public class NumberAttribute {
             num = countLines(file, num);
         }
         return num;
-    }
+    } 
      
       public int getAttribute(String file) throws IOException {
         br = util.getBufferTextLines(file);
