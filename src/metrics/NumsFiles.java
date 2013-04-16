@@ -5,7 +5,7 @@ import java.io.File;
 public class NumsFiles {
     //TODO: Refactoring, Smell,Smell,...
     
-    private static int josejuan;
+
   
     public static boolean extension(File dir, String extension) {
         return dir.getName().endsWith(extension);
