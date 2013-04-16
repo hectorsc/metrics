@@ -29,7 +29,7 @@ public class NumberAttribute {
     }
      public boolean isClass(){
          return(line.contains("class"));
-     }
+     } 
      
      public int getFunctions(String file) throws IOException {
         br = util.getBufferTextLines(file);
