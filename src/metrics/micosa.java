@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package metrics;
 
 import java.io.IOException;
@@ -28,5 +24,9 @@ public class micosa {
 
     public int getSwitchs(String file) throws IOException {
         return util.getFilePattern(file, "switch");
+    }
+    
+    public int getClass(String file) throws IOException {
+        return util.getFilePattern(file, "class");
     }
 }
