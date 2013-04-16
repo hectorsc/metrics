@@ -16,7 +16,10 @@ public class NumberAttribute {
      private Util util = new Util();
      private BufferedReader br;
      private String line;
-     private int num = 0;
+     private int num = 69;
+     private String file;
+     private boolean onClass = false;
+     
      
      public String getNameConstructs(String filename) {
         File f = new File(filename);
@@ -24,36 +27,40 @@ public class NumberAttribute {
         return namefile[0];
     }
      
-     public boolean isFunction(String line, String path) {
-        return (line.contains("void") || line.contains("{") && line.contains("(") && !line.contains("class") && !line.contains(getNameConstructs(path))) ? true : false;
+     
+     public boolean isFunction() {
+        return (line.contains("void") || line.contains("{") && line.contains("(") && !line.contains("class") && !line.contains(getNameConstructs(file))) ? true : false;
     }
+    
      public boolean isClass(){
-         return(line.contains("class"));
+         if((line.contains("class")||(onClass)== false)) onClass = true;
+         else return false;
+         return true;
+         //return(line.contains("class"));
      } 
      
-     public int getFunctions(String file) throws IOException {
-        br = util.getBufferTextLines(file);
-        while ((line = br.readLine()) != null) {
-            num = countLines(file, num);
-        }
-        return num;
-    } 
-     
       public int getAttribute(String file) throws IOException {
+        this.file = file;
         br = util.getBufferTextLines(file);
+        num = 0;
         while ((line = br.readLine()) != null) {
-            countAttribute();
+            num = countAttribute();
+            
         }
         return num;
     }
      
-     public void countAttribute(){
-         if(isClass()== true) ;
+     public int countAttribute(){
+         if((isClass()== true)&&(isFunction()==false)) return 35;// miro los atributos
+         // else miro los metodos
+         return 0;
      }
+     
+     /* 
      private int countLines(String file, int num) {
-        if (isFunction(line, file)) {
-            num++;
-        }
+        if (isFunction(line, file)) ;// llamar al iterador
         return num;
     }
+     */
+     
 }
