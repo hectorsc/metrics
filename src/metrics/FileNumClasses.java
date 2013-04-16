@@ -31,9 +31,10 @@ public class FileNumClasses {
     }
 
     public int numLinesEffectives(String file) throws IOException {
+        num = 0;
         br = util.getBufferTextLines(file);
         while ((line = br.readLine()) != null) {
-            if (!(line.isEmpty() || "".equals(line) || " ".equals(line) || "\n".equals(line) || isLineSpaceBlank(line))) {
+            if(!line.trim().equals("")){
                 num++;
             }
         }
@@ -41,6 +42,7 @@ public class FileNumClasses {
     }
 
     public int numLines(String file) throws IOException {
+        num = 0;
         br = util.getBufferTextLines(file);
         while ((line = br.readLine()) != null) {
             num++;
@@ -49,6 +51,7 @@ public class FileNumClasses {
     }
 
     public int getFunctions(String file) throws IOException {
+        num = 0;
         br = util.getBufferTextLines(file);
         while ((line = br.readLine()) != null) {
             num = countLines(file, num);
