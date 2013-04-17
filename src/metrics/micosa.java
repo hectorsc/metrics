@@ -3,6 +3,7 @@ package metrics;
 import java.io.IOException;
 
 public class micosa {
+    private int hector;
 
     private Util util = new Util();
 
